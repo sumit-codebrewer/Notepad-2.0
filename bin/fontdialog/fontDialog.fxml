@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="fontdialog.FontDialogController" alignment="CENTER"
+	hgap="10" vgap="10" prefWidth="400" prefHeight="250">
+	<Label text="Sample:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+	<Label fx:id="sample" text="AaBbYyZz" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1" 
+		GridPane.columnSpan="2" style="-fx-border-color: #6b6b6b; -fx-padding: 30;"/>
+	<Label text="Font Family" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+	<ComboBox fx:id="fontfamily" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" onAction="#getSelectedFont">
+		<items>
+			<FXCollections fx:factory="observableArrayList"/>
+		</items> 
+	</ComboBox>
+</GridPane> 
+
