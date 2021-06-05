@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.net.URL;
 import java.util.Optional;
 
+import colordialog.ColorDialogController;
 import fontdialog.FontDialogController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -145,6 +146,30 @@ public class SampleController {
             String currFont = controller.getFont();
             Font font = Font.font(currFont, 16);
             mainTextArea.setFont(font);
+        }
+	}
+	
+	@FXML
+	public void showColorDialog() {
+		
+		Dialog<ButtonType> dialog=new Dialog<ButtonType>();
+		dialog.initOwner(mainPane.getScene().getWindow());
+		dialog.setTitle("Change Color");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/colordialog/ColorDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        ColorDialogController controller = new ColorDialogController();
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+        	String currentColor=controller.getColor();
+        	mainTextArea.setStyle("-fx-text-fill: #"+currentColor.substring(2,8)+";");
         }
 	}
 	

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ColorPicker?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="colordialog.ColorDialogController" alignment="CENTER"
+	hgap="10" vgap="10" prefWidth="400" prefHeight="250">
+	<Label text="Pick up a Color" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+	<ColorPicker fx:id="colorpicker" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3" onAction="#getSelectedColor"/>
+</GridPane>
+

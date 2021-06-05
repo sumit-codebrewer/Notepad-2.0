@@ -23,6 +23,7 @@
 			<Menu text="Format">
 				<CheckMenuItem text="Word Wrap" onAction="#handleWordWrap"/>
 				<MenuItem text="Font" onAction="#showFontDialog"/>
+				<MenuItem text="Color" onAction="#showColorDialog"/>
 			</Menu>
 			<Menu text="Help">
 				<MenuItem text="About Creator" onAction="#handleAbout"/>
