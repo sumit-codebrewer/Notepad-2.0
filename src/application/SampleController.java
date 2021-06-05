@@ -130,7 +130,7 @@ public class SampleController {
 		dialog.initOwner(mainPane.getScene().getWindow());
 		dialog.setTitle("Change Font");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("fontdialog/fontDialog.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/fontdialog/fontDialog.fxml"));
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
         } catch(Exception e) {
