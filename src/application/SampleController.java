@@ -22,6 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import sizedialog.SizeDialogController;
 
 public class SampleController {
 	
@@ -34,6 +35,8 @@ public class SampleController {
 	private Stage currentStage;
 	
 	private File currentFile;
+	
+	private String currentFont;
 	
 	private static final FileChooser fileChooser=new FileChooser();
 	
@@ -143,8 +146,8 @@ public class SampleController {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
         Optional<ButtonType> result = dialog.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK) {
-            String currFont = controller.getFont();
-            Font font = Font.font(currFont, 16);
+            currentFont = controller.getFont();
+            Font font = Font.font(currentFont, 16);
             mainTextArea.setFont(font);
         }
 	}
@@ -170,6 +173,31 @@ public class SampleController {
         if(result.isPresent() && result.get() == ButtonType.OK) {
         	String currentColor=controller.getColor();
         	mainTextArea.setStyle("-fx-text-fill: #"+currentColor.substring(2,8)+";");
+        }
+	}
+	
+	@FXML
+	public void showSizeDialog() {
+		
+		Dialog<ButtonType> dialog=new Dialog<ButtonType>();
+		dialog.initOwner(mainPane.getScene().getWindow());
+		dialog.setTitle("Change size");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/sizedialog/SizeDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        SizeDialogController controller = new SizeDialogController();
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+        	int currentSize=controller.getSize();
+        	Font font=new Font(currentFont,currentSize);
+        	mainTextArea.setFont(font);
         }
 	}
 	
