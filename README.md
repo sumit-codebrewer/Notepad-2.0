@@ -19,36 +19,50 @@
 ## Screenshots
 
 ### Main View
-<img src="Screenshots/main.png" alt="main" align="center"/>
+<img src="Screenshots/main.png" alt="main" align="center" height="420"  width="900"/>
 <br>
 
 ### File Options
-<img src="Screenshots/file.png" alt="file" align="center"/>
+<img src="Screenshots/file.png" alt="file" align="center" height="420"  width="900"/>
 <br>
 
 ### Open a File
-<img src="Screenshots/open.png" alt="open" align="center"/>
+<img src="Screenshots/open.png" alt="open" align="center" height="420"  width="900"/>
 <br>
 
 ### Opened a File
-<img src="Screenshots/openedfile.png" alt="opened file" align="center"/>
+<img src="Screenshots/openedfile.png" alt="opened file" align="center" height="420"  width="900"/>
 <br>
 
 ### Save as Option
-<img src="Screenshots/saveas.png" alt="saveas" align="center"/>
+<img src="Screenshots/saveas.png" alt="saveas" align="center" height="420"  width="900"/>
 <br>
 
 ### No WordWrap
-<img src="Screenshots/nowordwrap.png" alt="nowordwrap" align="center"/>
+<img src="Screenshots/nowordwrap.png" alt="nowordwrap" align="center" height="420"  width="900"/>
 <br>
 
 ### WordWrap
-<img src="Screenshots/wordwrap.png" alt="wordwrap" align="center"/>
+<img src="Screenshots/wordwrap.png" alt="wordwrap" align="center" height="420"  width="900"/>
 <br>
 
 ### Change Font
-<img src="Screenshots/font.png" alt="font" align="center"/>
+<img src="Screenshots/font.png" alt="font" align="center" height="420"  width="900"/>
 <br>
 
 ### Changed Font (Times New Roman-->Arial)
-<img src="Screenshots/changedfont.png" alt="changedFont" align="center"/>
+<img src="Screenshots/changedfont.png" alt="changedFont" align="center" height="420"  width="900"/>
+
+### Change Color
+<img src="Screenshots/color.png" alt="font" align="center" height="420"  width="900"/>
+<br>
+
+### Changed Color (Black-->Green)
+<img src="Screenshots/changedcolor.png" alt="changedFont" align="center" height="420"  width="900"/>
+
+### Change Size
+<img src="Screenshots/size.png" alt="font" align="center" height="420"  width="900"/>
+<br>
+
+### Changed Size (16-->47)
+<img src="Screenshots/changedsize.png" alt="changedFont" align="center" height="420"  width="900"/>
