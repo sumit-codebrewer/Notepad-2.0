@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml"
+	fx:controller="feedbackform.FeedbackController" hgap="10" vgap="10">
+	<Label text="Name:" GridPane.rowIndex="0"
+		GridPane.columnIndex="0">
+		<font>
+			<Font name="Times New Roman" size="16" />
+		</font>
+	</Label>
+	<TextField fx:id="nameField" GridPane.rowIndex="0"
+		GridPane.columnIndex="1" />
+	<fx:define>
+		<ToggleGroup fx:id="reviewToggleGroup" />
+	</fx:define>
+	<Label text="Review:" GridPane.rowIndex="1"
+		GridPane.columnIndex="0">
+		<font>
+			<Font name="Times New Roman" size="16" />
+		</font>
+	</Label>
+	<HBox GridPane.rowIndex="1" GridPane.columnIndex="1">
+		<RadioButton fx:id="review1" text="Very Good"
+			toggleGroup="$reviewToggleGroup" />
+		<RadioButton fx:id="review2" text="Good"
+			toggleGroup="$reviewToggleGroup" />
+		<RadioButton fx:id="review3" text="Not satisfactory"
+			toggleGroup="$reviewToggleGroup" />
+		<RadioButton fx:id="review4" text="Bad"
+			toggleGroup="$reviewToggleGroup" />
+	</HBox>
+	<Label text="Any suggestions" GridPane.rowIndex="3"
+		GridPane.columnIndex="0">
+		<font>
+			<Font name="Times New Roman" size="16" />
+		</font>
+	</Label>
+	<TextArea fx:id="suggestionsArea" GridPane.rowIndex="3"
+		GridPane.columnIndex="1" WrapText="true" />
+	<Button text="Confirm" GridPane.rowIndex="4"
+		GridPane.columnIndex="1" onAction="#handleClicked" />
+	<Label fx:id="msgLabel" GridPane.rowIndex="5"
+		GridPane.columnIndex="1" />
+
+</GridPane>
+	
+
