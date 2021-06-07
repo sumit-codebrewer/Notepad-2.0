@@ -8,17 +8,23 @@
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
 	
 <BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
 	<top>
 		<MenuBar style="-fx-background-color:#f2f2f2;" >
 			<Menu text="File">
-				<MenuItem text="New" onAction="#createSpace"/>
+				<MenuItem text="New              " onAction="#createSpace"/>
 				<MenuItem text="Open" onAction="#showOpenDialog"/>
 				<MenuItem text="Save" onAction="#saveFile"/>
 				<MenuItem text="Save as" onAction="#showSaveAsDialog"/>
 				<SeparatorMenuItem/>
 				<MenuItem text="Exit" onAction="#handleExit"/>
+			</Menu>
+			<Menu text="View">
+				<MenuItem text="Search" onAction="#handleSearch" />
+				<MenuItem text="Find and Replace" onAction="#handleFindAndReplace" />
 			</Menu>
 			<Menu text="Format">
 				<CheckMenuItem text="Word Wrap" onAction="#handleWordWrap"/>
@@ -28,8 +34,17 @@
 					<MenuItem text="Size" onAction="#showSizeDialog"/>
 				</Menu>
 			</Menu>	
+			<Menu text="Font">
+				<fx:define>
+					<ToggleGroup fx:id="fontToggleGroup"/>
+				</fx:define>
+				<RadioMenuItem text="Regular" selected="true" onAction="#handleRegularFont" toggleGroup="$fontToggleGroup"/>
+				<RadioMenuItem text="Bold" onAction="#handleBoldFont" toggleGroup="$fontToggleGroup"/>
+				<RadioMenuItem text="Italic" onAction="#handleItalicFont" toggleGroup="$fontToggleGroup"/>			
+			</Menu>
 			<Menu text="Help">
-				<MenuItem text="About Creator" onAction="#handleAbout"/>
+				<MenuItem text="About Creator   " onAction="#handleAbout"/>
+				<MenuItem text="Give FeedBack" onAction="#handleFeedback"/>
 			</Menu>
 		</MenuBar>
 	</top>
