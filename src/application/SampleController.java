@@ -23,6 +23,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -47,6 +48,8 @@ public class SampleController {
 	int currentSize = 16;
 
 	private static final FileChooser fileChooser = new FileChooser();
+
+	public static int index = -1;
 
 	static {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -100,7 +103,7 @@ public class SampleController {
 			alert.initOwner(mainPane.getScene().getWindow());
 			alert.setTitle("Error!");
 			alert.setHeaderText("No file selected!");
-			alert.setContentText("Please choose Save option");
+			alert.setContentText("Please choose Save as option");
 			alert.showAndWait();
 
 		}
@@ -118,6 +121,20 @@ public class SampleController {
 	@FXML
 	public void handleExit() {
 		Platform.exit();
+	}
+
+	@FXML
+	public void handleZoomIn() {
+		Font font = new Font(currentFont, 36);
+		mainTextArea.setFont(font);
+		mainPane.setEffect(new javafx.scene.effect.InnerShadow(8.7, Color.GRAY));
+	}
+
+	@FXML
+	public void handleZoomOut() {
+		Font font = new Font(currentFont, 16);
+		mainTextArea.setFont(font);
+		mainPane.setEffect(null);
 	}
 
 	@FXML
@@ -172,28 +189,37 @@ public class SampleController {
 		dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 		Optional<ButtonType> result = dialog.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {
+			String findText = controller.getText();
+			String mainText = mainTextArea.getText();
+			index = mainText.indexOf(findText);
+			if (index != -1) {
+				String replaceText = controller.getReplaceText();
+				mainText = mainText.replace(findText, replaceText);
+				mainTextArea.setText(mainText);
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.initOwner(mainPane.getScene().getWindow());
+				alert.setTitle("Found the word...");
+				alert.setHeaderText("Find Replace Succesfull!!!");
+				alert.setContentText("Check the word you have entered");
+				alert.showAndWait();
+			} else {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.initOwner(mainPane.getScene().getWindow());
+				alert.setTitle("Can't find the word");
+				alert.setHeaderText("Find Replace Unsuccesfull!!!");
+				alert.showAndWait();
+			}
+		}
+	}
 
-		}
+	@FXML
+	public void handleLock() {
+		mainTextArea.setEditable(false);
 	}
-	
-	public int carryOutSearch(String text) {
-		if(text.trim().length()==0) {
-			return -1;
-		}
-		else {
-			String mainText=mainTextArea.getText();
-			System.out.println(mainText);
-//			int index=mainText.indexOf(text);
-			return 0;
-		}
-	}
-	
-	public boolean carryOutReplace(String text,String altText) {
-		if(text.trim().length()==0||altText.trim().length()==0) {
-			return false;
-		}
-		mainTextArea.getText().replaceFirst(text, altText);
-		return true;
+
+	@FXML
+	public void handleUnlock() {
+		mainTextArea.setEditable(true);
 	}
 
 	@FXML
@@ -287,6 +313,7 @@ public class SampleController {
 	@FXML
 	public void handleBoldFont() {
 		mainTextArea.setFont(Font.font(currentFont, FontWeight.BOLD, currentSize));
+		System.out.println(mainTextArea.getText());
 	}
 
 	@FXML
@@ -303,7 +330,7 @@ public class SampleController {
 			alert.initOwner(mainPane.getScene().getWindow());
 			// Stage stage=(Stage)alert.getDialogPane().getScene().getWindow();
 			alert.setTitle("About Creator");
-			alert.setHeaderText("Notepad is developed by:");
+			alert.setHeaderText("Notepad 2.0 is developed by:");
 			alert.setContentText("Sumit-Codebrewer");
 			alert.showAndWait();
 		} catch (Exception e) {
@@ -336,7 +363,7 @@ public class SampleController {
 			try (FileWriter f = new FileWriter("feedbacks.txt", true);
 					BufferedWriter b = new BufferedWriter(f);
 					PrintWriter p = new PrintWriter(b);) {
-				p.print(String.format("Name:%s\tReview:%s\t Suggestions:%s\n",name,review,suggestions));
+				p.print(String.format("Name:%s\tReview:%s\t Suggestions:%s\n", name, review, suggestions));
 				p.println();
 			} catch (IOException i) {
 				i.printStackTrace();

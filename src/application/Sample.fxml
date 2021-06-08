@@ -23,8 +23,25 @@
 				<MenuItem text="Exit" onAction="#handleExit"/>
 			</Menu>
 			<Menu text="View">
+				<Menu text="Zoom">
+				<fx:define>
+					<ToggleGroup fx:id="zoomToggleGroup"/>
+				</fx:define>
+					<RadioMenuItem text="Zoom In" onAction="#handleZoomIn" toggleGroup="$zoomToggleGroup" />
+					<RadioMenuItem text="Zoom Out" onAction="#handleZoomOut" toggleGroup="$zoomToggleGroup"/>
+				</Menu>
 				<MenuItem text="Search" onAction="#handleSearch" />
 				<MenuItem text="Find and Replace" onAction="#handleFindAndReplace" />
+				<Menu text="Screen Setup  ">
+				<fx:define>
+					<ToggleGroup fx:id="lockToggleGroup"/>
+				</fx:define>
+					<MenuItem text=""/>
+					<Menu text="Screen Lock">
+					<RadioMenuItem text="Lock" onAction="#handleLock" toggleGroup="$lockToggleGroup"/>
+					<RadioMenuItem text="Unlock" onAction="#handleUnlock" toggleGroup="$lockToggleGroup" selected="true"/>
+					</Menu>
+				</Menu>
 			</Menu>
 			<Menu text="Format">
 				<CheckMenuItem text="Word Wrap" onAction="#handleWordWrap"/>
