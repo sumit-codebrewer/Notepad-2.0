@@ -3,15 +3,19 @@
 
 <p> This is a simple notepad application created in Java using JavaFx-11. </p>
 
-<img src="https://media1.tenor.com/images/ea10b8fa2027af32d57c356872885367/tenor.gif?itemid=19002315" align="right" height="200"/>
+<img src="https://media1.tenor.com/images/ea10b8fa2027af32d57c356872885367/tenor.gif?itemid=19002315" align="right" height="320"/>
 <br>
 
 ### Features
 <ul>
     <li>Create a new file.
     <li>Edit an existing file.
-    <li>Select font family.
+    <li>Select font family,color and size
     <li>Save the file at current location or save as it with new name.
+    <li>Web Search Handle
+    <li>Feedback Form
+    <li>Find and Replace text
+    <li>Other features - Zoom In,Zoom Out,Screen Lock,Font Styling,WordWrap...
 </ul>
 
 ---
