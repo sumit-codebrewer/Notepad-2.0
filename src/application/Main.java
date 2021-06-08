@@ -15,11 +15,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = (Parent)FXMLLoader.load(getClass().getResource("Sample.fxml"));
-			primaryStage.setTitle("Notepad");
+			primaryStage.setTitle("Notepad 2.0");
 			primaryStage.getIcons().add(new Image("Icons/logo.png"));
 			primaryStage.setScene(new Scene(root));
 			Screen screen=Screen.getPrimary();
-			
+			setUserAgentStylesheet(STYLESHEET_MODENA);
 			Rectangle2D bounds=screen.getBounds();
 		    primaryStage.setX(bounds.getMinX());
 		    primaryStage.setY(bounds.getMinY());
