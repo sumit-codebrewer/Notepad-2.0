@@ -54,15 +54,27 @@
 <img src="Screenshots/changedfont.png" alt="changedFont" align="center" height="420"  width="900"/>
 
 ### Change Color
-<img src="Screenshots/color.png" alt="font" align="center" height="420"  width="900"/>
+<img src="Screenshots/color.png" alt="color" align="center" height="420"  width="900"/>
 <br>
 
 ### Changed Color (Black-->Green)
-<img src="Screenshots/changedcolor.png" alt="changedFont" align="center" height="420"  width="900"/>
+<img src="Screenshots/changedcolor.png" alt="changedColor" align="center" height="420"  width="900"/>
 
 ### Change Size
-<img src="Screenshots/size.png" alt="font" align="center" height="420"  width="900"/>
+<img src="Screenshots/size.png" alt="size" align="center" height="420"  width="900"/>
 <br>
 
 ### Changed Size (16-->47)
-<img src="Screenshots/changedsize.png" alt="changedFont" align="center" height="420"  width="900"/>
+<img src="Screenshots/changedsize.png" alt="changedSize" align="center" height="420"  width="900"/>
+
+### Web Search Handle
+<img src="Screenshots/websearch.png" alt="webSearch" align="center" height="420"  width="900"/>
+
+### Font Styling (Bold,Itallic,Regular)
+<img src="Screenshots/fontoptions.png" alt="FontOptions" align="center" height="420"  width="900"/>
+
+### Feedback Form
+<img src="Screenshots/feedback.png" alt="Feedback" align="center" height="420"  width="900"/>
+
+### Feedback Data
+<img src="Screenshots/feedbackdata.png" alt="feedbackData" align="center" height="420"  width="900"/>
