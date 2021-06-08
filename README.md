@@ -1,5 +1,5 @@
 
-# Notepad :wave:
+# Notepad 2.0 :wave:
 
 <p> This is a simple notepad application created in Java using JavaFx-11. </p>
 
@@ -78,3 +78,9 @@
 
 ### Feedback Data
 <img src="Screenshots/feedbackdata.png" alt="feedbackData" align="center" height="420"  width="900"/>
+
+### Find and Replace
+<img src="Screenshots/findAndReplace.png" alt="FindandReplace" align="center" height="420"  width="900"/>
+
+### Other New Features 
+<img src="Screenshots/newfeatures.png" alt="NewFeatures" align="center" height="420"  width="900"/>
