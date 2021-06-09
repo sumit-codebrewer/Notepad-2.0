@@ -15,7 +15,7 @@
     <li>Web Search Handle
     <li>Feedback Form
     <li>Find and Replace text
-    <li>Other features - Zoom In,Zoom Out,Screen Lock,Font Styling,WordWrap...
+    <li>Other features - Zoom In,Zoom Out,Screen Lock,Font Styling,Casing,WordWrap...
 </ul>
 
 ---
