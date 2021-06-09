@@ -49,8 +49,7 @@ public class SampleController {
 
 	private static final FileChooser fileChooser = new FileChooser();
 
-	public static int index = -1;
-
+	
 	static {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text", "*.txt"),
@@ -174,6 +173,7 @@ public class SampleController {
 	@FXML
 	public void handleFindAndReplace() {
 		Dialog<ButtonType> dialog = new Dialog<ButtonType>();
+		int index=-1;
 		dialog.initOwner(mainPane.getScene().getWindow());
 		dialog.setTitle("Find & Replace");
 		FXMLLoader fxmlLoader = new FXMLLoader();
@@ -200,16 +200,26 @@ public class SampleController {
 				alert.initOwner(mainPane.getScene().getWindow());
 				alert.setTitle("Found the word...");
 				alert.setHeaderText("Find Replace Succesfull!!!");
-				alert.setContentText("Check the word you have entered");
 				alert.showAndWait();
 			} else {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(mainPane.getScene().getWindow());
 				alert.setTitle("Can't find the word");
 				alert.setHeaderText("Find Replace Unsuccesfull!!!");
+				alert.setContentText("Check the word you have entered");
 				alert.showAndWait();
 			}
 		}
+	}
+	
+	@FXML
+	public void handleUppercase() {
+		mainTextArea.setText(mainTextArea.getText().toUpperCase());
+	}
+	
+	@FXML
+	public void handleLowercase() {
+		mainTextArea.setText(mainTextArea.getText().toLowerCase());
 	}
 
 	@FXML
@@ -319,6 +329,11 @@ public class SampleController {
 	@FXML
 	public void handleItalicFont() {
 		mainTextArea.setFont(Font.font(currentFont, FontPosture.ITALIC, currentSize));
+	}
+	
+	@FXML
+	public void handleUnderLine() {
+		mainTextArea.getStyleClass().add("underlined-text-area");
 	}
 
 	@FXML
