@@ -10,87 +10,96 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
 <BorderPane fx:id="mainPane"
 	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="application.SampleController"
-	stylesheets="@application.css" >
+	stylesheets="@application.css">
 	<top>
-		<MenuBar style="-fx-background-color:#f2f2f2;">
-			<Menu text="File">
-				<MenuItem text="New              " onAction="#createSpace" />
-				<MenuItem text="Open" onAction="#showOpenDialog" />
-				<MenuItem text="Save" onAction="#saveFile" />
-				<MenuItem text="Save as" onAction="#showSaveAsDialog" />
-				<SeparatorMenuItem />
-				<MenuItem text="Exit" onAction="#handleExit" />
-			</Menu>
-			<Menu text="View">
-				<Menu text="Zoom">
-					<fx:define>
-						<ToggleGroup fx:id="zoomToggleGroup" />
-					</fx:define>
-					<RadioMenuItem text="Zoom In"
-						onAction="#handleZoomIn" toggleGroup="$zoomToggleGroup" />
-					<RadioMenuItem text="Zoom Out"
-						onAction="#handleZoomOut" toggleGroup="$zoomToggleGroup" />
+		<HBox>
+			<MenuBar
+				style="-fx-background-color:#f2f2f2; -fx-font-size:14px;">
+				<Menu text="File">
+					<MenuItem text="New              " onAction="#createSpace" />
+					<MenuItem text="Open" onAction="#showOpenDialog" />
+					<MenuItem text="Save" onAction="#saveFile" />
+					<MenuItem text="Save as" onAction="#showSaveAsDialog" />
+					<SeparatorMenuItem />
+					<MenuItem text="Exit" onAction="#handleExit" />
 				</Menu>
-				<MenuItem text="Search 🔍"
-				 onAction="#handleSearch" />
-				<MenuItem text="Find and Replace"
-					onAction="#handleFindAndReplace" />
-				<SeparatorMenuItem/>
-				<Menu text="Screen Setup  ">
-					<fx:define>
-						<ToggleGroup fx:id="lockToggleGroup" />
-					</fx:define>
-					<fx:define>
-						<ToggleGroup fx:id="caseToggleGroup" />
-					</fx:define>
-					<Menu text="Casing  ">
-						<RadioMenuItem text="Uppercase A⬆"
-							onAction="#handleUppercase" toggleGroup="$caseToggleGroup" />
-						<RadioMenuItem
-							text="Lowercase A⬇ " 
-							onAction="#handleLowercase" toggleGroup="$caseToggleGroup" />
+				<Menu text="View">
+					<Menu text="Zoom">
+						<fx:define>
+							<ToggleGroup fx:id="zoomToggleGroup" />
+						</fx:define>
+						<RadioMenuItem text="Zoom In"
+							onAction="#handleZoomIn" toggleGroup="$zoomToggleGroup" />
+						<RadioMenuItem text="Zoom Out"
+							onAction="#handleZoomOut" toggleGroup="$zoomToggleGroup" />
 					</Menu>
-					<Menu text="Screen Lock">
-						<RadioMenuItem text="Lock   🔐"
-						 onAction="#handleLock"
-							toggleGroup="$lockToggleGroup" />
-						<RadioMenuItem text="Unlock 🔓"
-							onAction="#handleUnlock" toggleGroup="$lockToggleGroup"
-							selected="true" />
+					<MenuItem text="Search 🔍" onAction="#handleSearch" />
+					<MenuItem text="Find and Replace"
+						onAction="#handleFindAndReplace" />
+					<SeparatorMenuItem />
+					<Menu text="Screen Setup  ">
+						<fx:define>
+							<ToggleGroup fx:id="lockToggleGroup" />
+						</fx:define>
+						<fx:define>
+							<ToggleGroup fx:id="caseToggleGroup" />
+						</fx:define>
+						<Menu text="Casing  ">
+							<RadioMenuItem text="Uppercase A⬆"
+								onAction="#handleUppercase" toggleGroup="$caseToggleGroup" />
+							<RadioMenuItem text="Lowercase A⬇ "
+								onAction="#handleLowercase" toggleGroup="$caseToggleGroup" />
+						</Menu>
+						<Menu text="Screen Lock">
+							<RadioMenuItem text="Lock   🔐"
+								onAction="#handleLock" toggleGroup="$lockToggleGroup" />
+							<RadioMenuItem text="Unlock 🔓"
+								onAction="#handleUnlock" toggleGroup="$lockToggleGroup"
+								selected="true" />
+						</Menu>
 					</Menu>
 				</Menu>
-			</Menu>
-			<Menu text="Format">
-				<CheckMenuItem text="Word Wrap"
-					onAction="#handleWordWrap" />
+				<Menu text="Format">
+					<CheckMenuItem text="Word Wrap"
+						onAction="#handleWordWrap" />
+					<Menu text="Font">
+						<MenuItem text="Style" onAction="#showFontDialog" />
+						<MenuItem text="Color" onAction="#showColorDialog" />
+						<MenuItem text="Size" onAction="#showSizeDialog" />
+					</Menu>
+				</Menu>
 				<Menu text="Font">
-					<MenuItem text="Style" onAction="#showFontDialog" />
-					<MenuItem text="Color" onAction="#showColorDialog" />
-					<MenuItem text="Size" onAction="#showSizeDialog" />
+					<fx:define>
+						<ToggleGroup fx:id="fontToggleGroup" />
+					</fx:define>
+					<RadioMenuItem text="Regular" selected="true"
+						onAction="#handleRegularFont" toggleGroup="$fontToggleGroup" />
+					<RadioMenuItem text="Bold" onAction="#handleBoldFont"
+						toggleGroup="$fontToggleGroup" />
+					<RadioMenuItem text="Italic"
+						onAction="#handleItalicFont" toggleGroup="$fontToggleGroup" />
+					<RadioMenuItem text="Underline"
+						onAction="#handleUnderLine" toggleGroup="$fontToggleGroup" />
 				</Menu>
-			</Menu>
-			<Menu text="Font">
-				<fx:define>
-					<ToggleGroup fx:id="fontToggleGroup" />
-				</fx:define>
-				<RadioMenuItem text="Regular" selected="true"
-					onAction="#handleRegularFont" toggleGroup="$fontToggleGroup" />
-				<RadioMenuItem text="Bold" onAction="#handleBoldFont"
-					toggleGroup="$fontToggleGroup" />
-				<RadioMenuItem text="Italic"
-					onAction="#handleItalicFont" toggleGroup="$fontToggleGroup" />
-				<RadioMenuItem text="Underline"
-					onAction="#handleUnderLine" toggleGroup="$fontToggleGroup" />
-			</Menu>
-			<Menu text="Help">
-				<MenuItem text="About Creator   " onAction="#handleAbout" />
-				<MenuItem text="Give FeedBack" onAction="#handleFeedback" />
-			</Menu>
-		</MenuBar>
+				<Menu text="Help">
+					<MenuItem text="About Creator   " onAction="#handleAbout" />
+					<MenuItem text="Give FeedBack" onAction="#handleFeedback" />
+				</Menu>
+			</MenuBar>
+			<Pane HBox.hgrow="ALWAYS" />
+			<ToolBar prefHeight="10.0">
+				<ToggleButton fx:id="webButton"
+					text="Switch to web view" onAction="#handleWebSwitch" />
+			</ToolBar>
+		</HBox>
 	</top>
 	<center>
 		<VBox>

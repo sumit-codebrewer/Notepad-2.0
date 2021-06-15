@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -40,6 +41,9 @@ public class SampleController {
 	@FXML
 	private TextArea mainTextArea;
 
+	@FXML
+	private ToggleButton webButton;
+
 	private Stage currentStage;
 
 	private File currentFile;
@@ -49,7 +53,6 @@ public class SampleController {
 
 	private static final FileChooser fileChooser = new FileChooser();
 
-	
 	static {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text", "*.txt"),
@@ -66,6 +69,8 @@ public class SampleController {
 	@FXML
 	public void createSpace() {
 		mainTextArea.clear();
+		mainTextArea.setStyle("-fx-text-fill:black;");
+		mainTextArea.setFont(Font.font("Times New Roman", 16));
 		currentFile = null;
 
 		if (currentFile == null) {
@@ -173,7 +178,7 @@ public class SampleController {
 	@FXML
 	public void handleFindAndReplace() {
 		Dialog<ButtonType> dialog = new Dialog<ButtonType>();
-		int index=-1;
+		int index = -1;
 		dialog.initOwner(mainPane.getScene().getWindow());
 		dialog.setTitle("Find & Replace");
 		FXMLLoader fxmlLoader = new FXMLLoader();
@@ -211,12 +216,12 @@ public class SampleController {
 			}
 		}
 	}
-	
+
 	@FXML
 	public void handleUppercase() {
 		mainTextArea.setText(mainTextArea.getText().toUpperCase());
 	}
-	
+
 	@FXML
 	public void handleLowercase() {
 		mainTextArea.setText(mainTextArea.getText().toLowerCase());
@@ -317,20 +322,23 @@ public class SampleController {
 
 	@FXML
 	public void handleRegularFont() {
+		mainTextArea.getStyleClass().remove("underlined-text-area");
 		mainTextArea.setFont(Font.font(currentFont, FontWeight.NORMAL, currentSize));
 	}
 
 	@FXML
 	public void handleBoldFont() {
+		mainTextArea.getStyleClass().remove("underlined-text-area");
 		mainTextArea.setFont(Font.font(currentFont, FontWeight.BOLD, currentSize));
 		System.out.println(mainTextArea.getText());
 	}
 
 	@FXML
 	public void handleItalicFont() {
+		mainTextArea.getStyleClass().remove("underlined-text-area");
 		mainTextArea.setFont(Font.font(currentFont, FontPosture.ITALIC, currentSize));
 	}
-	
+
 	@FXML
 	public void handleUnderLine() {
 		mainTextArea.getStyleClass().add("underlined-text-area");
@@ -384,6 +392,24 @@ public class SampleController {
 				i.printStackTrace();
 			}
 
+		}
+	}
+
+	@FXML
+	public void handleWebSwitch() {
+		if (webButton.isSelected()) {
+			Desktop desktop = Desktop.getDesktop();
+			try {
+				desktop.browse(new URL("https://sumit-codebrewer.github.io/Notepad-web-version/").toURI());
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.initOwner(mainPane.getScene().getWindow());
+				alert.setTitle("Loading web version");
+				alert.setHeaderText("Please wait...");
+				alert.setContentText("Redirecting to the web version of Notepad 2.0");
+				alert.showAndWait();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
