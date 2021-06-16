@@ -87,4 +87,4 @@
 <img src="Screenshots/findAndReplace.png" alt="FindandReplace" align="center" height="420"  width="900"/>
 
 ### Other New Features 
-<img src="Screenshots/newfeatures.png" alt="NewFeatures" align="center" height="420"  width="900"/>
+<img src="Screenshots/newfeatures.png" alt="NewFeatures" align="center" height="420" width="900"/>
