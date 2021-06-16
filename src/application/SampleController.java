@@ -76,7 +76,7 @@ public class SampleController {
 		if (currentFile == null) {
 			currentStage = (Stage) mainPane.getScene().getWindow();
 		}
-		currentStage.setTitle("Notepad");
+		currentStage.setTitle("Notepad 2.0");
 	}
 
 	@FXML
