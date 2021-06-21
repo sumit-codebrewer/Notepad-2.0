@@ -13,8 +13,8 @@
     <li>Select font family,color and size
     <li>Web Search Handle
     <li>Feedback Form
-    <li>Find and Replace text
-    <li>Other features - Zoom In,Zoom Out,Screen Lock,Font Styling,Casing,WordWrap...
+    <li>Common features-Find and Replace,Cut,Copy,Paste,Undo,Redo...
+    <li>Other features - Zoom In,Zoom Out,Screen Lock,Font Styling,Casing,Ordering...
     <li>WEB version of Notepad 2.0 (Newly added)
 </ul>
 
