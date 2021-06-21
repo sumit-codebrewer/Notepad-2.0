@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import colordialog.ColorDialogController;
@@ -18,11 +20,13 @@ import fontdialog.FontDialogController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -40,9 +44,6 @@ public class SampleController {
 
 	@FXML
 	private TextArea mainTextArea;
-
-	@FXML
-	private ToggleButton webButton;
 
 	private Stage currentStage;
 
@@ -64,6 +65,7 @@ public class SampleController {
 	public void initialize() {
 		mainTextArea.setStyle("-fx-text-fill:black;");
 		mainTextArea.setFont(Font.font("Times New Roman", 16));
+		mainTextArea.getStyleClass().remove("centered-text-area");
 	}
 
 	@FXML
@@ -126,19 +128,107 @@ public class SampleController {
 	public void handleExit() {
 		Platform.exit();
 	}
-
+	
 	@FXML
-	public void handleZoomIn() {
-		Font font = new Font(currentFont, 36);
-		mainTextArea.setFont(font);
-		mainPane.setEffect(new javafx.scene.effect.InnerShadow(8.7, Color.GRAY));
+	public void handleUndo() {
+		if(mainTextArea.isUndoable()) {
+			mainTextArea.undo();
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Error!");
+			alert.setHeaderText("Cannot Undo!!");
+			alert.setContentText("You have reached the beginning");
+			alert.showAndWait();
+		}
 	}
-
+	
 	@FXML
-	public void handleZoomOut() {
-		Font font = new Font(currentFont, 16);
-		mainTextArea.setFont(font);
-		mainPane.setEffect(null);
+	public void handleRedo() {
+		if(mainTextArea.isRedoable()) {
+			mainTextArea.redo();
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Error!");
+			alert.setHeaderText("Cannot Redo!!");
+			alert.setContentText("You have reached the end");
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void handleCut() {
+		String text=mainTextArea.getSelectedText();
+		if(text!=null) {
+		final Clipboard clipboard = Clipboard.getSystemClipboard();
+		final ClipboardContent content = new ClipboardContent();
+		content.putString(mainTextArea.getSelectedText());
+		mainTextArea.deleteText(mainTextArea.getSelection());
+		clipboard.setContent(content);
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Error!!");
+			alert.setHeaderText("Cannot Cut!!");
+			alert.setContentText("Select some text to perform cut operation");
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void handleCopy() {
+		String text=mainTextArea.getSelectedText();
+		if(text!=null) {
+		final Clipboard clipboard = Clipboard.getSystemClipboard();
+		final ClipboardContent content = new ClipboardContent();
+		content.putString(mainTextArea.getSelectedText());
+		clipboard.setContent(content);
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Error!!");
+			alert.setHeaderText("Cannot Copy!!");
+			alert.setContentText("Select some text to perform copy operation");
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void handlePaste() {
+		final Clipboard systemClipboard = Clipboard.getSystemClipboard();	  
+		String clipboardText = systemClipboard.getString();
+		if(clipboardText!=null) {
+			mainTextArea.setText(clipboardText);
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Error!!");
+			alert.setHeaderText("Cannot Paste!!");
+			alert.setContentText("No text in clipboard to paste...");
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void handleDelete() {
+		String text=mainTextArea.getSelectedText();
+		if(text!=null) {
+			mainTextArea.deleteText(mainTextArea.getSelection());
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Error!!");
+			alert.setHeaderText("Cannot Delete!!");
+			alert.setContentText("Select some text to perform deletion");
+			alert.showAndWait();
+		}
 	}
 
 	@FXML
@@ -215,6 +305,45 @@ public class SampleController {
 				alert.showAndWait();
 			}
 		}
+	}
+	
+	@FXML
+	public void handleLTR() {
+		mainTextArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+	}
+	
+	
+	@FXML
+	public void handleRTL() {
+		mainTextArea.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+	}
+	
+	@FXML
+	public void handleSelectAll() {
+		mainTextArea.selectAll();
+	}
+	
+	@FXML
+	public void handleDateTime() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String mainText=mainTextArea.getText();
+		mainText+=dtf.format(now);
+		mainTextArea.setText(mainText);
+	}
+
+	@FXML
+	public void handleZoomIn() {
+		Font font = new Font(currentFont, 36);
+		mainTextArea.setFont(font);
+		mainPane.setEffect(new javafx.scene.effect.InnerShadow(8.7, Color.GRAY));
+	}
+
+	@FXML
+	public void handleZoomOut() {
+		Font font = new Font(currentFont, 16);
+		mainTextArea.setFont(font);
+		mainPane.setEffect(null);
 	}
 
 	@FXML
@@ -319,6 +448,7 @@ public class SampleController {
 			mainTextArea.setFont(font);
 		}
 	}
+	
 
 	@FXML
 	public void handleRegularFont() {
@@ -397,19 +527,17 @@ public class SampleController {
 
 	@FXML
 	public void handleWebSwitch() {
-		if (webButton.isSelected()) {
-			Desktop desktop = Desktop.getDesktop();
-			try {
-				desktop.browse(new URL("https://sumit-codebrewer.github.io/Notepad-web-version/").toURI());
-				Alert alert = new Alert(Alert.AlertType.INFORMATION);
-				alert.initOwner(mainPane.getScene().getWindow());
-				alert.setTitle("Loading web version");
-				alert.setHeaderText("Please wait...");
-				alert.setContentText("Redirecting to the web version of Notepad 2.0");
-				alert.showAndWait();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.browse(new URL("https://sumit-codebrewer.github.io/Notepad-web-version/").toURI());
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initOwner(mainPane.getScene().getWindow());
+			alert.setTitle("Loading web version");
+			alert.setHeaderText("Please wait...");
+			alert.setContentText("Redirecting to the web version of Notepad 2.0");
+			alert.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
@@ -31,6 +31,58 @@
 					<SeparatorMenuItem />
 					<MenuItem text="Exit" onAction="#handleExit" />
 				</Menu>
+				<Menu text="Edit">
+					<MenuItem text="Undo       [Ctrl+Z]"
+						onAction="#handleUndo" />
+					<MenuItem text="Redo       [Ctrl+Y]"
+						onAction="#handleRedo" />
+					<SeparatorMenuItem />
+					<MenuItem text="Cut          [Ctrl+X]" onAction="#handleCut" />
+					<MenuItem text="Copy       [Ctrl+C]"
+						onAction="#handleCopy" />
+					<MenuItem text="Paste       [Ctrl+V]"
+						onAction="#handlePaste" />
+					<MenuItem text="Delete        [Del]" onAction="#handleDelete" />
+					<SeparatorMenuItem />
+					<MenuItem text="Search 🔍" onAction="#handleSearch" />
+					<MenuItem text="Find and Replace"
+						onAction="#handleFindAndReplace" />
+					<Menu text="Ordering">
+						<fx:define>
+							<ToggleGroup fx:id="$orderingGroup" />
+						</fx:define>
+						<RadioMenuItem text="Left to Right" selected="true"
+							toggleGroup="$orderingGroup" onAction="#handleLTR" />
+						<RadioMenuItem text="Right to left"
+							toggleGroup="$orderingGroup" onAction="#handleRTL" />
+					</Menu>
+					<SeparatorMenuItem />
+					<MenuItem text="Select All   [Ctrl+A]"
+						onAction="#handleSelectAll" />
+					<MenuItem text="Time/Date" onAction="#handleDateTime" />
+				</Menu>
+				<Menu text="Format">
+					<CheckMenuItem text="Word Wrap"
+						onAction="#handleWordWrap" />
+					<Menu text="Font">
+						<MenuItem text="Style" onAction="#showFontDialog" />
+						<MenuItem text="Color" onAction="#showColorDialog" />
+						<MenuItem text="Size" onAction="#showSizeDialog" />
+					</Menu>
+					<Menu text="Styling">
+						<fx:define>
+							<ToggleGroup fx:id="fontToggleGroup" />
+						</fx:define>
+						<RadioMenuItem text="Regular" selected="true"
+							onAction="#handleRegularFont" toggleGroup="$fontToggleGroup" />
+						<RadioMenuItem text="Bold"
+							onAction="#handleBoldFont" toggleGroup="$fontToggleGroup" />
+						<RadioMenuItem text="Italic"
+							onAction="#handleItalicFont" toggleGroup="$fontToggleGroup" />
+						<RadioMenuItem text="Underline"
+							onAction="#handleUnderLine" toggleGroup="$fontToggleGroup" />
+					</Menu>
+				</Menu>
 				<Menu text="View">
 					<Menu text="Zoom">
 						<fx:define>
@@ -41,10 +93,6 @@
 						<RadioMenuItem text="Zoom Out"
 							onAction="#handleZoomOut" toggleGroup="$zoomToggleGroup" />
 					</Menu>
-					<MenuItem text="Search 🔍" onAction="#handleSearch" />
-					<MenuItem text="Find and Replace"
-						onAction="#handleFindAndReplace" />
-					<SeparatorMenuItem />
 					<Menu text="Screen Setup  ">
 						<fx:define>
 							<ToggleGroup fx:id="lockToggleGroup" />
@@ -67,28 +115,6 @@
 						</Menu>
 					</Menu>
 				</Menu>
-				<Menu text="Format">
-					<CheckMenuItem text="Word Wrap"
-						onAction="#handleWordWrap" />
-					<Menu text="Font">
-						<MenuItem text="Style" onAction="#showFontDialog" />
-						<MenuItem text="Color" onAction="#showColorDialog" />
-						<MenuItem text="Size" onAction="#showSizeDialog" />
-					</Menu>
-				</Menu>
-				<Menu text="Font">
-					<fx:define>
-						<ToggleGroup fx:id="fontToggleGroup" />
-					</fx:define>
-					<RadioMenuItem text="Regular" selected="true"
-						onAction="#handleRegularFont" toggleGroup="$fontToggleGroup" />
-					<RadioMenuItem text="Bold" onAction="#handleBoldFont"
-						toggleGroup="$fontToggleGroup" />
-					<RadioMenuItem text="Italic"
-						onAction="#handleItalicFont" toggleGroup="$fontToggleGroup" />
-					<RadioMenuItem text="Underline"
-						onAction="#handleUnderLine" toggleGroup="$fontToggleGroup" />
-				</Menu>
 				<Menu text="Help">
 					<MenuItem text="About Creator   " onAction="#handleAbout" />
 					<MenuItem text="Give FeedBack" onAction="#handleFeedback" />
@@ -96,8 +122,7 @@
 			</MenuBar>
 			<Pane HBox.hgrow="ALWAYS" />
 			<ToolBar prefHeight="10.0">
-				<ToggleButton fx:id="webButton"
-					text="Switch to web view" onAction="#handleWebSwitch" />
+				<Button text="Switch to web view" onAction="#handleWebSwitch" />
 			</ToolBar>
 		</HBox>
 	</top>
