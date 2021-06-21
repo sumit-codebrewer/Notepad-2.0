@@ -11,11 +11,11 @@
     <li>Create a new file.
     <li>Edit an existing file.
     <li>Select font family,color and size
-    <li>Save the file at current location or save as it with new name.
     <li>Web Search Handle
     <li>Feedback Form
     <li>Find and Replace text
     <li>Other features - Zoom In,Zoom Out,Screen Lock,Font Styling,Casing,WordWrap...
+    <li>WEB version of Notepad 2.0 (Newly added)
 </ul>
 
 ---
@@ -87,4 +87,4 @@
 <img src="Screenshots/findAndReplace.png" alt="FindandReplace" align="center" height="420"  width="900"/>
 
 ### Other New Features 
-<img src="Screenshots/newfeatures.png" alt="NewFeatures" align="center" height="420"  width="900"/>
+<img src="Screenshots/newfeatures.png" alt="NewFeatures" align="center" height="420" width="900"/>
