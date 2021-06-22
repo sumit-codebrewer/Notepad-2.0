@@ -60,7 +60,7 @@
 ### Help Options
 <img src="Screenshots/help.png" alt="help options" align="center" height="420"  width="900"/>
 
----
+
 
 # WEB VIEW
 <img src="Screenshots/webversion.png" alt="web version" align="center" height="420"  width="900"/>
