@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
