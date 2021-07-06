@@ -1,7 +1,4 @@
 
-
-
-
 # Notepad 2.0 :wave:
 
 <p> This is a simple notepad application created in Java using JavaFx-11. </p>
